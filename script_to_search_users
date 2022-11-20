@@ -1,0 +1,32 @@
+#!/bin/bash
+
+#Author: Kenneth Dzonyrah
+#Date: 20/11/2022
+
+#Description: Script to chech all users on the system and display thier shell
+
+
+echo 'Execution started ......'
+USERS=$(cat /etc/passwd | awk -F ":" '{print $1 ", User shell is: " $7}')
+#USERS=$(cat /etc/passwd | awk -F ":" '{print $1}')
+echo $?
+echo ${USERS}
+
+echo 'SUCCESS.................'
+
+
+
+
+
+#OR
+
+USERS=$(cat /etc/passwd | awk -F ":" '{print $1}')
+for names in $USERS;
+
+do
+
+SHELLS=`grep $names /etc/passwd | awk -F ":" '{print $7}'`
+
+echo "$names users's shell is $SHELLS"
+
+done
